@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+#fundo, html{
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: auto ;
+    /* background-image: linear-gradient(to bottom, #221d51, #1e204f, #1a224d,
+     #18244a, #172547, #182b4b, #1a304f, #1c3653,
+      #1f425f, #224d6a, #265a75, #2a6680);
+      background-repeat:no-repeat;*/
+     background-color: #083542; 
+     position: relative;
+}
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+  }
