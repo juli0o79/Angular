@@ -55,7 +55,7 @@ export class ClientComponent implements OnInit {
       const values = Object.entries(data)
       this.teste= data;
       await this.teste.push(data);
-      console.log(data);    
+      console.log(this.teste);    
     })
     
   }
@@ -89,9 +89,6 @@ export class ClientComponent implements OnInit {
     const card = (document.getElementById('options') as HTMLSelectElement); 
     let selected =  card.selectedIndex;
     const pay = (document.getElementById('price') as HTMLInputElement);
-    if(pay.value !== this.currency_validation || "") {
-      alert(this.value)
-    }
     const current_card = this.cards[selected]; 
     this.body.card_number = current_card.card_number;
     this.body.cvv = current_card.cvv;
@@ -103,15 +100,24 @@ export class ClientComponent implements OnInit {
     
   }
   // função final que engloba o seguimento da promisse de envio e altera o valor da variável para mostrar tela de aprovado
-  total(){
+  total(e){
+    
+    const pay = (document.getElementById('price') as HTMLInputElement);
+    if(pay.value == "" || 0){
+      e.preventDefault()
+      alert("digite um valor");
+    }
+    else{
     this.send().then(() => {
       this.approved = true ;
-      console.log(this.approved)})
+      console.log(this.approved)
+    })}
   }
-  // função para fechar modal
+  // função para fechar modal e resetar valores
   close(){
-    
+    this.value = 0;
     this.condition =true;
+    this.approved = false;
     
   }
   

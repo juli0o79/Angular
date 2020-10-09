@@ -24,22 +24,25 @@
             <a href="javascript:function f(e){e.preventDefault();}" class="close" (click)="close()">x</a>
         </div>
      
-        <h2>Pagamento para <span class="name">{{current_user.name}}</span></h2>
-        <img [src]="current_user.img" alt="" class="rounded">
-        <div>
-            <span>R$:</span>
-            <input type="number" id="price" placeholder="0,00" pattern='[0-9]+(\\.[0-9][0-9]?)?' [(ngModel)]="value"/>
+        <h2 class="just">Pagamento para <span class="name">{{current_user.name}}</span></h2>
+        <img [src]="current_user.img" alt="" class="rounded bottom">
+        <div id="cash">
+            <span>Valor:</span>
+            <input id="price" placeholder="R$ 0,00" currencyMask [(ngModel)]="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
         </div><br>
-        <select name="" id="options" >
-            <option value="" *ngFor = "let card of cards; let i = index"><span>cartão com o final</span>{{last[i]}} </option>
-        </select>
-        <button id="pay" (click) = "total()">pagar</button>
+        <div id="cards">
+            <label for="options">Cartões: </label>
+            <select name="" id="options" >
+                <option class="opt" value="" *ngFor = "let card of cards; let i = index"><span>final </span>{{last[i]}} </option>
+            </select>
+        </div>
+        <button id="pay" (click) = "total($event)">pagar</button>
     </div>
     <div class= "payment" *ngIf = "approved">
         <div class="link_container">
             <a href="javascript:function f(e){e.preventDefault();}" class="close" (click)="close()">x</a>
         </div> 
-        <img [src]="current_user.img" alt="" class="rounded">
+        <img [src]="current_user.img" alt="" class="rounded bottom">
         <h1>aprovado</h1>
         <h2>Finalizado pagamento no valor de {{value}}</h2>
     </div>
