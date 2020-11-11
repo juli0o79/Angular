@@ -1,3 +1,8 @@
+Projeto desenvolvido em Angular que propõe uma plataforma de pagamento para usuários registrados
+
+
+
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
